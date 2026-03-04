@@ -1,0 +1,41 @@
+[33mChecking connectivity to the model hosters, this may take a while. To bypass this check, set `PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK` to `True`.[0m
+which: no ccache in (/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/bin:/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/bin:/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/bin:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/panfs/accrepfs.vampire/home/bhamk/.cursor-server/bin/linux-x64/7d96c2a03bb088ad367615e9da1a3fe20fbbc6a0/bin/remote-cli:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/home/bhamk/.cursor-server/bin/linux-x64/7d96c2a03bb088ad367615e9da1a3fe20fbbc6a0/bin/remote-cli:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/bhamk/.local/bin:/home/bhamk/bin:/home/bhamk/.local/bin:/home/bhamk/bin:/home/bhamk/.local/bin:/home/bhamk/bin)
+/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/lib64/python3.9/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+[32mCreating model: ('PP-LCNet_x1_0_doc_ori', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.[0m
+[32mCreating model: ('UVDoc', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/UVDoc`.[0m
+[32mCreating model: ('PP-LCNet_x1_0_textline_ori', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.[0m
+[32mCreating model: ('PP-OCRv5_server_det', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/PP-OCRv5_server_det`.[0m
+[32mCreating model: ('en_PP-OCRv5_mobile_rec', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/en_PP-OCRv5_mobile_rec`.[0m
+
+
+--------------------------------------
+C++ Traceback (most recent call last):
+--------------------------------------
+0   paddle::AnalysisPredictor::ZeroCopyRun(bool)
+1   paddle::framework::NaiveExecutor::RunInterpreterCore(std::vector<std::string, std::allocator<std::string > > const&, bool, bool)
+2   paddle::framework::InterpreterCore::Run(std::vector<std::string, std::allocator<std::string > > const&, bool, bool, bool, bool)
+3   paddle::framework::PirInterpreter::Run(std::vector<std::string, std::allocator<std::string > > const&, bool, bool, bool, bool)
+4   paddle::framework::PirInterpreter::TraceRunImpl()
+5   paddle::framework::PirInterpreter::TraceRunInstructionList(std::vector<std::unique_ptr<paddle::framework::InstructionBase, std::default_delete<paddle::framework::InstructionBase> >, std::allocator<std::unique_ptr<paddle::framework::InstructionBase, std::default_delete<paddle::framework::InstructionBase> > > > const&)
+6   paddle::framework::PirInterpreter::RunInstructionBase(paddle::framework::InstructionBase*)
+7   paddle::framework::OneDNNPhiKernelInstruction::Run()
+8   void phi::KernelImpl<void (*)(phi::OneDNNContext const&, phi::DenseTensor const&, phi::DenseTensor const&, paddle::optional<phi::DenseTensor> const&, paddle::optional<phi::DenseTensor> const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::string const&, std::vector<int, std::allocator<int> > const&, int, std::string const&, std::string const&, std::string const&, bool, bool, phi::DenseTensor*), &(void phi::fusion::FusedConv2DKernel<float, phi::OneDNNContext>(phi::OneDNNContext const&, phi::DenseTensor const&, phi::DenseTensor const&, paddle::optional<phi::DenseTensor> const&, paddle::optional<phi::DenseTensor> const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::string const&, std::vector<int, std::allocator<int> > const&, int, std::string const&, std::string const&, std::string const&, bool, bool, phi::DenseTensor*))>::KernelCallHelper<paddle::optional<phi::DenseTensor> const&, paddle::optional<phi::DenseTensor> const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::string const&, std::vector<int, std::allocator<int> > const&, int, std::string const&, std::string const&, std::string const&, bool, bool, phi::DenseTensor*, phi::TypeTag<int> >::Compute<1, 2, 0, 0, phi::OneDNNContext const, phi::DenseTensor const, phi::DenseTensor const>(phi::KernelContext*, phi::OneDNNContext const&, phi::DenseTensor const&, phi::DenseTensor const&)
+9   void phi::fusion::FusedConv2DKernel<float, phi::OneDNNContext>(phi::OneDNNContext const&, phi::DenseTensor const&, phi::DenseTensor const&, paddle::optional<phi::DenseTensor> const&, paddle::optional<phi::DenseTensor> const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::string const&, std::vector<int, std::allocator<int> > const&, int, std::string const&, std::string const&, std::string const&, bool, bool, phi::DenseTensor*)
+10  void phi::ConvOnednn<float, phi::OneDNNContext>(phi::OneDNNContext const&, phi::DenseTensor const*, phi::DenseTensor const*, phi::DenseTensor const*, phi::DenseTensor const*, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::string const&, std::vector<int, std::allocator<int> > const&, int, std::string const&, bool, bool, std::string const&, bool, bool, phi::DenseTensor*)
+11  phi::ComputeFP32<float, float>(phi::OneDNNContext const&, phi::DenseTensor const*, phi::DenseTensor const*, phi::DenseTensor const*, phi::DenseTensor const*, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::string const&, std::vector<int, std::allocator<int> > const&, int, std::string const&, bool, bool, std::string const&, bool, bool, phi::DenseTensor*)::{lambda()#1}::operator()() const::{lambda()#1}::operator()() const
+12  phi::onednn::ConvOneDNNHandlerT<float, float, float>::ConvOneDNNHandlerT(phi::OneDNNContext const&, dnnl::engine, phi::Place, phi::DenseTensor const*, phi::DenseTensor const*, phi::DenseTensor const*, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::string const&, std::vector<int, std::allocator<int> > const&, int, std::string const&, bool, bool, std::string const&, bool, bool, phi::DenseTensor*, std::string const&)
+13  void phi::funcs::OneDNNHandlerT<float, dnnl::convolution_forward, dnnl::convolution_backward_data, dnnl::convolution_backward_weights>::AcquireForwardPrimitiveDescriptor<dnnl::primitive_attr const&, dnnl::prop_kind const&, dnnl::algorithm, dnnl::memory::desc&, dnnl::memory::desc&, dnnl::memory::desc&, dnnl::memory::desc const&, std::vector<long, std::allocator<long> > const&, std::vector<long, std::allocator<long> > const&, std::vector<long, std::allocator<long> > const&, std::vector<long, std::allocator<long> > const&>(dnnl::primitive_attr const&, dnnl::prop_kind const&, dnnl::algorithm&&, dnnl::memory::desc&, dnnl::memory::desc&, dnnl::memory::desc&, dnnl::memory::desc const&, std::vector<long, std::allocator<long> > const&, std::vector<long, std::allocator<long> > const&, std::vector<long, std::allocator<long> > const&, std::vector<long, std::allocator<long> > const&)
+
+----------------------
+Error Message Summary:
+----------------------
+FatalError: `Erroneous arithmetic operation` is detected by the operating system.
+  [TimeInfo: *** Aborted at 1772481557 (unix time) try "date -d @1772481557" if you are using GNU date ***]
+  [SignalInfo: *** SIGFPE (@0x7fce1f5131d2) received by PID 3380359 (TID 0x7fce57216e00) from PID 525414866 ***]
+

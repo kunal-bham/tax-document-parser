@@ -3,45 +3,67 @@
 Run PaddleOCR on a PDF file to extract text.
 """
 
+import os
 import sys
+
+# Try to reduce low-level kernel issues / memory pressure
+os.environ.setdefault("FLAGS_use_mkldnn", "0")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("KMP_BLOCKTIME", "0")
+
 from paddleocr import PaddleOCR
 import pypdfium2 as pdfium
 import numpy as np
+from PIL import Image
+import paddle
 
-def pdf_to_images(pdf_path):
-    """Convert PDF pages to images."""
+
+def pdf_to_images(pdf_path, debug_save_first_page: bool = False):
+    """Convert PDF pages to images (numpy arrays). Optionally save first page as PNG for debugging."""
     pdf = pdfium.PdfDocument(pdf_path)
     images = []
-    
+    first_page_saved = False
+
     try:
         for i in range(len(pdf)):
             page = pdf.get_page(i)
             pil_image = page.render(scale=2.0).to_pil()
+
+            if debug_save_first_page and not first_page_saved:
+                debug_path = "debug_page1.png"
+                pil_image.save(debug_path)
+                print(f"Saved first page PNG for debugging to: {debug_path}")
+                first_page_saved = True
+
             # Convert PIL Image to numpy array
             np_image = np.array(pil_image)
             images.append(np_image)
     finally:
         pdf.close()
-    
+
     return images
 
 def run_ocr_on_pdf(pdf_path, output_file=None):
     """Run OCR on PDF file using PaddleOCR."""
+    print("Setting Paddle device to GPU if available...")
+    try:
+        paddle.set_device("gpu")
+        print("Paddle device set to GPU.")
+    except Exception as e:
+        print(f"Could not use GPU, falling back to CPU: {e}")
+        paddle.set_device("cpu")
+
     print(f"Initializing PaddleOCR...")
     # Initialize PaddleOCR - use_textline_orientation=True for better text detection
-    # Try CPU mode to avoid GPU issues
+    # (this version of PaddleOCR does NOT support a `show_log` argument)
     try:
-        ocr = PaddleOCR(use_textline_orientation=True, lang='en', show_log=False)
+        ocr = PaddleOCR(use_textline_orientation=True, lang='en')
     except Exception as e:
-        print(f"Warning: {e}, trying without textline orientation...")
-        try:
-            ocr = PaddleOCR(lang='en', show_log=False)
-        except:
-           print("Failed to initialize PaddleOCR. Falling back to no logs")
-           ocr = PaddleOCR(lang='en')
+        print(f"Warning during PaddleOCR init with textline orientation: {e}")
+        ocr = PaddleOCR(lang='en')
     
     print(f"Converting PDF to images: {pdf_path}")
-    images = pdf_to_images(pdf_path)
+    images = pdf_to_images(pdf_path, debug_save_first_page=True)
     print(f"Found {len(images)} pages")
     
     all_results = []

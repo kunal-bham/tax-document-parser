@@ -1,0 +1,64 @@
+[33mChecking connectivity to the model hosters, this may take a while. To bypass this check, set `PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK` to `True`.[0m
+which: no ccache in (/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/bin:/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/bin:/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/bin:/panfs/accrepfs.vampire/home/bhamk/venv/bin:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/panfs/accrepfs.vampire/home/bhamk/.cursor-server/bin/linux-x64/3578107fdf149b00059ddad37048220e41681000/bin/remote-cli:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/home/bhamk/.cursor-server/bin/linux-x64/3578107fdf149b00059ddad37048220e41681000/bin/remote-cli:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/accre/usr/sbin:/accre/usr/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/bhamk/.local/bin:/home/bhamk/bin:/home/bhamk/.local/bin:/home/bhamk/bin:/home/bhamk/.local/bin:/home/bhamk/bin)
+/panfs/accrepfs.vampire/home/bhamk/tax-document-parser/tax-document-parser/.venv/lib64/python3.9/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+[32mCreating model: ('PP-LCNet_x1_0_doc_ori', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.[0m
+[32mCreating model: ('UVDoc', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/UVDoc`.[0m
+[32mCreating model: ('PP-LCNet_x1_0_textline_ori', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.[0m
+[32mCreating model: ('PP-OCRv5_server_det', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/PP-OCRv5_server_det`.[0m
+[32mCreating model: ('en_PP-OCRv5_mobile_rec', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/bhamk/.paddlex/official_models/en_PP-OCRv5_mobile_rec`.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1224x1584 at 0x7F56ADCFE7C0>.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1224x1584 at 0x7F56ADCFE070>.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1224x1584 at 0x7F56ADD13400>.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1224x1584 at 0x7F56ADD13790>.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1584x1224 at 0x7F56ADD136D0>.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1224x1584 at 0x7F56ADD13760>.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1224x1584 at 0x7F56ADD13700>.[0m
+[33mNot supported input data type! Only `numpy.ndarray` and `str` are supported! So has been ignored: <PIL.Image.Image image mode=RGB size=1224x1584 at 0x7F56ADD13A60>.[0m
+Running OCR on: Enviva_Sample_Tax_Package_10000_units.pdf
+Output will be saved to: ocr_output.txt
+
+Initializing PaddleOCR...
+Converting PDF to images: Enviva_Sample_Tax_Package_10000_units.pdf
+Found 8 pages
+
+Processing page 1/8...
+  Extracted 0 text blocks from page 1
+
+Processing page 2/8...
+  Extracted 0 text blocks from page 2
+
+Processing page 3/8...
+  Extracted 0 text blocks from page 3
+
+Processing page 4/8...
+  Extracted 0 text blocks from page 4
+
+Processing page 5/8...
+  Extracted 0 text blocks from page 5
+
+Processing page 6/8...
+  Extracted 0 text blocks from page 6
+
+Processing page 7/8...
+  Extracted 0 text blocks from page 7
+
+Processing page 8/8...
+  Extracted 0 text blocks from page 8
+
+============================================================
+OCR Summary:
+  Total pages processed: 8
+  Total text blocks extracted: 0
+============================================================
+
+Results saved to: ocr_output.txt
+
+First few extracted text blocks:
+
+✓ OCR processing completed successfully!
